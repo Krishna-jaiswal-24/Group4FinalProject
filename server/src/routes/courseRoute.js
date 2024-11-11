@@ -9,4 +9,5 @@ router.get("/:courseId", courseController.getCourseById);
 router.delete("/:courseId", courseController.deleteCourse);
 router.put("/:courseId", courseController.updateCourse);
 
+
 export default router;
