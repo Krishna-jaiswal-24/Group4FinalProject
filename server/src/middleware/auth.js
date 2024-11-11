@@ -15,4 +15,4 @@ export const authenticationToken = (req,res,next) => {
         req.user = user;
         next();
     });
-};
+}; 
