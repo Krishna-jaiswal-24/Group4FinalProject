@@ -1,5 +1,8 @@
 import * as User from "../../models/user/services.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import 'dotenv/config';
+
 
 export const loginUser = async (req, res) => {
   try {
@@ -15,12 +18,19 @@ export const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid password" });
     }
 
+    const token = jwt.sign(
+      {userId: user._id,username: user.username},
+      process.env.SECRET_KEY,
+      {expiresIn: "1h"}
+    )
+
     return res.status(200).json({
       message: "User logged in successfully",
       data: {
         username: user.username,
         name: user.name,
         userId: user._id,
+        token
       },
     });
   } catch (error) {
