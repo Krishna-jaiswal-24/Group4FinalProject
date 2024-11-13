@@ -1,0 +1,13 @@
+.courses-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: start;
+    padding: 20px;
+    width: 80%;
+    /* background-color: red; */
+    overflow-y: scroll;
+    position: absolute;
+    left: 20%;
+    top: 12%;
+  }
