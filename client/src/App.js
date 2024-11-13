@@ -2,6 +2,9 @@ import './App.css';
 import Courses from './components/Courses';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import CreateUser from './components/CreateUser';
 
 function App() {
   const courses = [
@@ -80,9 +83,17 @@ function App() {
   ];
   return (
     <>
-    <Navbar/>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/create" element={<CreateUser />} />
+        </Routes>
+      </div>
+    </Router>
+    {/* <Navbar/>
     <Courses courses={courses} />
-    <Sidebar/>
+    <Sidebar/> */}
     </>
   );
 }
