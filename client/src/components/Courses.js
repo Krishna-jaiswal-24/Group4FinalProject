@@ -1,6 +1,8 @@
 import React from 'react';
 import Course from './Course';
 import "../css_files/Courses.css";
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 const Courses = ({ courses = [] }) => {
   if (!Array.isArray(courses)) {
@@ -8,6 +10,9 @@ const Courses = ({ courses = [] }) => {
   }
 
   return (
+    <>
+    <Navbar/>
+    <Sidebar/>
     <div className="courses-container">
       {courses.length === 0 ? (
         <p>No courses available</p>
@@ -23,6 +28,7 @@ const Courses = ({ courses = [] }) => {
         ))
       )}
     </div>
+    </>
   );
 };
 
