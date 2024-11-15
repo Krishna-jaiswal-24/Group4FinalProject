@@ -1,4 +1,5 @@
 import * as Course from "../../models/courses/services.js";
+import { enrollInCourse } from "../../models/user/services.js";
 
 export const createCourse = async (req, res) => {
   try {
@@ -76,6 +77,23 @@ export const updateCourse = async (req, res) => {
     });
   } catch (error) {
     console.error("Error updating course:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const enrollInCourseController = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    const { userId } = req.body;
+
+    const result = await enrollInCourse(userId, courseId);
+
+    return res.status(200).json({
+      message: result.message,
+      data: result,
+    });
+  } catch (error) {
+    console.error("Error enrolling in course:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
