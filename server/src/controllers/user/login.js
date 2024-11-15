@@ -11,7 +11,7 @@ export const loginUser = async (req, res) => {
     const user = await User.getUser({ username });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
-    }
+    } 
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
@@ -35,6 +35,6 @@ export const loginUser = async (req, res) => {
     });
   } catch (error) {
     console.error("Error logging in user:", error);
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error", error:error.message });
   }
 };

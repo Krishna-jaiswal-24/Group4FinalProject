@@ -4,6 +4,7 @@ const secret_key = process.env.SECRET_KEY;
 
 export const authenticationToken = (req,res,next) => {
     const token = req.header('auth-token');
+    
 
     if(!token)
         return res.status(401).json({message: "unauthorized access"});

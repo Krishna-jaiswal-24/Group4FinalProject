@@ -5,7 +5,9 @@ import UserRouter from "./routes/userRoute.js";
 import CourseRouter from "./routes/courseRoute.js";
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "*",
+}));
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

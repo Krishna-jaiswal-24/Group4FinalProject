@@ -10,6 +10,4 @@ router.delete("/:courseId",authenticationToken, courseController.deleteCourse);
 router.put("/:courseId",authenticationToken, courseController.updateCourse);
 router.post("/:courseId/enroll", authenticationToken, courseController.enrollInCourseController);
 
-
-
 export default router;

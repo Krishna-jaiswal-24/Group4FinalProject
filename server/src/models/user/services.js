@@ -1,12 +1,14 @@
 import User from "./schema.js";
 import Course from "../courses/schema.js";
 
-export const getUserById = ({ userId }) =>
+export const getUserById = ( userId ) =>{
+  console.log("fetchUserCourse called userId", userId);
   User.findById(userId)
     .lean()
     .catch((error) => {
       throw new Error(error);
     });
+}
 
 export const create = (payload) =>
   User.create(payload).catch((error) => {
@@ -16,6 +18,7 @@ export const create = (payload) =>
 export const getUser = (query) =>
   User.findOne(query)
     .lean()
+    .populate("courses")
     .catch((error) => {
       throw new Error(error);
     });
@@ -48,4 +51,3 @@ export const enrollInCourse = async (userId, courseId) => {
     throw new Error(`Failed to enroll in course: ${error.message}`);
   }
 };
-    
