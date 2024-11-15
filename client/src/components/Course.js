@@ -1,17 +1,18 @@
 import React from 'react';
-import "../css_files/Course.css";
+import '../css_files/Course.css';
 
-const Course = ({ title, instructor, description }) => {
+const Course = ({ title, details, semester, onEnroll, showEnrollButton }) => {
   return (
-    <>
     <div className="course-card">
-        <h3 className="course-title">{title}</h3>
-        <p className="course-instructor">{instructor}</p>
-        <hr className='hl'/>
-        <p className="course-description">{description}</p>
-        {/* Add any other necessary elements */}
+      <h3>{title}</h3>
+      <p><strong>Semester:</strong> {semester}</p>
+      <p>{details}</p>
+      {showEnrollButton && (
+        <button className="enroll-button" onClick={onEnroll}>
+          <span className="plus-icon">+</span> Enroll
+        </button>
+      )}
     </div>
-    </>
   );
 };
 

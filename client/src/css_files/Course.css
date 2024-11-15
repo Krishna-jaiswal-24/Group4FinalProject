@@ -45,3 +45,17 @@
     margin-top: auto;
     text-align: start;
   }
+
+  .enroll-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.enroll-button .plus-icon {
+  font-weight: bold;
+  margin-right: 5px;
+}

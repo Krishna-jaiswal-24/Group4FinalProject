@@ -1,7 +1,7 @@
 /* Sidebar.css */
 
 .sidebar {
-    width: 18.2%;
+    width: 254px;
     height: 92%;
     padding: 20px;
     display: flex;
@@ -9,7 +9,7 @@
     align-items: flex-start;
     color: white;
     position: fixed;
-    top: 60px;
+    top: 42px;
     border-right: solid 2px rgb(231, 231, 231);
   }
   
@@ -20,7 +20,7 @@
   }
   
   .sidebar-button {
-    width: 120%;
+    width: 252px;
     position: relative;
     left: -20px;
     padding: 10px;
@@ -32,6 +32,7 @@
     border:none;
     border-bottom: solid 2px rgb(231, 231, 231);
     cursor: pointer;
+    border-radius: 0;
   }
   
   
@@ -46,10 +47,20 @@
   {
     position: relative;
     left: 0px;
-    width: 100.6%;
+    width: 252px;
     border: none;
     color: white;
-    position: absolute;
+    position: fixed;
     bottom:0px;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
+  }
+
+  .sidebar-button.active {
+    background-color: #7e7e7e;
+    color: #fff;
+  }
+  .sidebar-button:hover
+  {
+    background-color: #b1b1b1;
+    color: #fff;
   }

@@ -18,8 +18,9 @@ function Login() {
         password,
       });
 
-      // Store the token in localStorage
-      localStorage.setItem('token', response.data.token);
+      // Store the token and username in localStorage
+      localStorage.setItem('token', response.data.data.token);
+      localStorage.setItem('username', username); // Save the username
       alert(response.data.message);
 
       // Redirect to the desired page upon successful login
