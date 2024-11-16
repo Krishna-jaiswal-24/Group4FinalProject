@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven'
+    }
+    stages{
+        stage('Build Maven'){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ashishhiggins/CourseCatalogue.git']])
+                bat 'mvn clean install'
+            }
+        }
+        stage('Build Docker Image'){
+            steps{
+                script{
+                    bat 'docker build -t ashishhiggins/course-catalogue .'
+                }
+            }
+        }
+    }
+
+}
