@@ -1,5 +1,105 @@
 # Sriram branch description
 
+## Gateway Server token verification with Keycloak
+
+## Overview
+
+The folder gateway
+
+This project sets up a *Spring Cloud Gateway* application that routes requests to backend services while integrating authentication and authorization through *Keycloak*.
+
+The Gateway Server acts as a reverse proxy that manages routing, security, and request filtering for the backend microservices.
+
+---
+
+## Features
+
+1. *Routing*:
+   - Routes requests based on defined paths.
+   - The example here routes requests with a rewrite filter to a course catalog backend service.
+
+2. *Security*:
+   - Uses *OAuth2* for authentication and token relay.
+   - Authenticates requests with Keycloak, an open-source identity and access management solution.
+
+3. *Logging*:
+   - Configured logging for detailed debugging of Spring Cloud Gateway, Spring Security, and reactive operations.
+
+---
+
+## Configuration Details
+
+### 1. *Routing Configuration*
+
+- The Gateway defines a route with the ID CourRses-Catalog.
+- Incoming requests matching the specified path (/**) are forwarded to the backend microservice at http://10.0.7.38:8000.
+- Two filters are applied:
+  - *RewritePath*: Modifies the request path from /api/v1/course/fetch to match the backend API's expected format.
+  - *TokenRelay*: Propagates OAuth2 access tokens to the backend service for secure API calls.
+
+---
+
+### 2. *Security with Keycloak*
+
+- The Gateway uses Keycloak for OAuth2 authentication.
+- Configuration:
+  - client-id: Specifies the Keycloak client application registered in the realm.
+  - client-secret: The secret for the registered Keycloak client.
+  - scope: Requests OpenID Connect (OIDC) tokens for authentication.
+  - authorization-grant-type: Uses the authorization_code flow for OAuth2.
+  - redirect-uri: Defines where Keycloak will send the authorization code after successful login.
+  - issuer-uri: The Keycloak realm's URL for token validation and discovery.
+
+---
+
+### 3. *Application Properties*
+
+| Property                           | Description                                                                                 |
+|------------------------------------|---------------------------------------------------------------------------------------------|
+| spring.cloud.gateway.routes      | Defines routing rules and filters for incoming requests.                                    |
+| spring.security.oauth2.client    | Configures OAuth2 clients and provider information.                                         |
+| server.port                      | Specifies the port where the Gateway Server listens for incoming requests (set to 7000).    |
+| logging.level                    | Sets logging levels for detailed debugging of gateway, security, and reactive operations.   |
+
+---
+
+## How It Works
+
+1. *Authentication Flow*:
+   - Users accessing the Gateway are redirected to Keycloak for login.
+   - After successful login, Keycloak sends an authorization code to the Gateway.
+   - The Gateway exchanges the code for an access token and ID token from Keycloak.
+   - Tokens are stored and relayed to backend services as required.
+
+2. *Request Routing*:
+   - After authentication, the Gateway forwards requests to the appropriate backend service.
+   - The RewritePath filter ensures the backend API receives the correctly formatted request path.
+
+3. *Token Propagation*:
+   - The TokenRelay filter passes the authenticated user's access token to downstream services, ensuring secure communication.
+
+---
+
+## Prerequisites
+
+1. *Keycloak Setup*:
+   - A Keycloak realm and client configured for the Gateway.
+   - Redirect URI: http://10.0.4.193:7000/login/oauth2/code/{registrationId}.
+   - Client type: confidential with the authorization_code grant type enabled.
+
+2. *Backend Service*:
+   - A backend microservice running at http://10.0.7.38:8000 that expects authenticated requests.
+
+---
+
+## Running the Application
+
+1. Clone the repository and navigate to the project directory.
+2. Ensure Keycloak is running and configured with the correct client settings.
+3. Update the application.yml file with the correct Keycloak issuer URI, client ID, and secret.
+4. Build and run the application:
+   ```bash
+   ./mvnw spring-boot:run
 
 
 
