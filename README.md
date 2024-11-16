@@ -13,6 +13,10 @@ This branch of the project focuses on integrating a **React-based frontend** wit
 1. **Login and Token Generation:**
    - When a user logs in, their credentials are sent to the backend for validation.
    - On successful authentication, the backend generates a **JWT** and sends it to the frontend.
+   - 
+![image](https://github.com/user-attachments/assets/d1e086dc-b2e5-4a86-bd78-26e348888768)
+![image](https://github.com/user-attachments/assets/181d048c-44b0-47a5-8b65-0f4be80beb19)
+
 
 2. **Token Storage:**
    - The frontend securely stores the **JWT** in **localStorage** or **sessionStorage**, ensuring it persists for future authenticated requests.
@@ -52,6 +56,19 @@ This branch of the project focuses on integrating a **React-based frontend** wit
 
 3. **Error Responses:**
    - The backend provides meaningful responses for errors, such as **404 Not Found** for missing resources or **500 Internal Server Error** for unexpected issues. These responses are relayed to the frontend for user-friendly error handling.
+
+---
+
+Enrolled Courses View
+This section lists all the courses the user is currently enrolled in.
+![image](https://github.com/user-attachments/assets/3573c4b3-9f52-4610-b7d0-e23e0cae0cae)
+
+---
+
+All Courses View
+This section displays all available courses that a user can browse and enroll in.
+![image](https://github.com/user-attachments/assets/a9307075-c2cf-4daa-ba16-bdcd10706b43)
+
 
 ---
 
