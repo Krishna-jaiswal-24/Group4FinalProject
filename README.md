@@ -1,5 +1,12 @@
-# Sriram branch description
+# Group 4 Cloud Project Descreption
 
+## Authors
+
+- [Krishna Jaiswal 21BCS056](https://www.github.com/krishna-jaiswal-24)
+- [Ajay Bhakar 21BCS006](https://github.com/Abchoudhary2512)
+- [Ashish Higgins 21BCs014](https://github.com/ashishhiggins)
+- [Sriram Amballa 21BCS008](https://github.com/sriram1909)
+- [Aditya Dev 21BCS004](https://github.com/iamAdityaDev)
 
 
 
