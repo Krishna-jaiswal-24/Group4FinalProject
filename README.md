@@ -3,7 +3,7 @@
 
 
 
-# Keycloak Authentication Middleware
+## Keycloak Authentication Middleware
 
 Middleware for validating JSON Web Tokens (JWTs) issued by Keycloak using `express-jwt` and `jwks-rsa`.
 
