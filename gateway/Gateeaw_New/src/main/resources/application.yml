@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: CourRses-Catalog
+          uri: http://10.0.7.38:8000
+          predicates:
+            - Path=/**
+          filters:
+            - RewritePath=/api/v1/course/fetch,
+            - TokenRelay=
+
+
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: OAuth
+            client-secret: dHDkMHFoNVrDkQwoeuFpKG4YlNhSGktS
+            scope: openid
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://10.0.4.193:7000/login/oauth2/code/{registrationId}"
+        provider:
+            keycloak:
+                issuer-uri: https://ashishhiggins.centralindia.cloudapp.azure.com:8443/realms/Auth
+server:
+  port: 7000
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.security: DEBUG
+    reactor: DEBUG
